@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainfall Prediction Website</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+<body>
+    <header>
+        <img src="static/images/main.gif" alt="Full Screen GIF">
+        <div class="content">
+            <h1>Rainfall Prediction Website</h1>
+            <nav>
+                <a href="#about" class="btn btn-light">About</a>
+                <a href="#interactive-map" class="btn btn-light">Temperature Map</a>
+                <a href="#current-weather" class="btn btn-light">Current Weather Info</a>
+                <a href="#rainfall-prediction" class="btn btn-light">Rainfall Prediction</a>
+                <a href="#about-developers" class="btn btn-light">About Developers</a>
+            </nav>
+        </div>
+    </header>
+
+   <section id="about" class="mb-5">
+    <h2>About</h2>
+    <div class="about-container">
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it Temperature?</h3>
+            <p>
+Temperature is a measure of how hot or cold something is. It reflects the average kinetic energy of the particles in a substance. In everyday terms, it's how we perceive warmth or chilliness.
+
+Temperature is typically measured in degrees Celsius (°C), Fahrenheit (°F), or Kelvin (K). For example, water freezes at 0°C or 32°F, and boils at 100°C or 212°F.
+            </p>
+        </div>
+
+        <!-- White Box 2 -->
+        <div class="white-box image-box">
+            <img src="static/images/temperature.png" alt="Rainfall Prediction">
+        </div>
+        <div class="about-container">
+        <div class="white-box image-box">
+            <img src="static/images/windspeed.png" alt="Rainfall Prediction">
+        </div>
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it wind speed?</h3>
+            <p>
+Wind speed measures how fast the wind is blowing and is usually expressed in km/h, mph, or m/s. It's measured with instruments like cup anemometers or ultrasonic sensors and affects weather conditions, comfort, and various activities.
+            </p>
+        </div>
+    </div>
+        </div>
+           <div class="about-container">
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it Humidity?</h3>
+            <p>
+Humidity is the amount of moisture in the air. It’s usually expressed as a percentage, representing how saturated the air is with water vapor. Higher humidity means more moisture, which can affect comfort and weather conditions.
+            </p>
+        </div>
+
+        <!-- White Box 2 -->
+        <div class="white-box image-box">
+            <img src="static/images/humidity.png" alt="Rainfall Prediction">
+        </div>
+        <div class="about-container">
+        <div class="white-box image-box">
+            <img src="static/images/pressure.png" alt="Rainfall Prediction">
+        </div>
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it pressure?</h3>
+            <p>
+Pressure is the force exerted by the weight of the air above a specific point. It's measured in units like Pascals (Pa), millibars (mb), or inches of mercury (inHg). Atmospheric pressure affects weather patterns and can influence things like air density and weather forecasting.
+            </p>
+        </div>
+    </div>
+        </div>
+           <div class="about-container">
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it cloud cover?</h3>
+            <p>
+Cloud cover refers to the fraction of the sky covered by clouds. It is usually expressed as a percentage, with 0% indicating a clear sky and 100% meaning the sky is fully covered by clouds. Cloud cover affects weather conditions and temperature by blocking sunlight and trapping heat.
+            </p>
+        </div>
+
+        <!-- White Box 2 -->
+        <div class="white-box image-box">
+            <img src="static/images/cloudcover.png" alt="Rainfall Prediction">
+        </div>
+        <div class="about-container">
+        <div class="white-box image-box">
+            <img src="static/images/uvindex.png" alt="Rainfall Prediction">
+        </div>
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>What it UV Index?</h3>
+            <p>
+                The UV Index measures the strength of ultraviolet (UV) radiation from the sun. It ranges from 0 to 11+, with higher values indicating stronger UV rays and a greater risk of skin damage. A higher UV Index means you need more protection, like sunscreen or clothing, to avoid harm from the sun.
+            </p>
+        </div>
+    </div>
+        </div>
+           <div class="about-container">
+        <!-- White Box 1 -->
+        <div class="white-box text-box">
+            <h3>How does all this factors affect RainFall?</h3>
+            <p>
+Temperature affects how much moisture air can hold; warmer air can hold more moisture, leading to potential rainfall when it cools.
+Wind speed influences how moisture-laden air moves and accumulates, affecting rain patterns.
+Humidity determines how much moisture is available in the air for cloud formation and precipitation.
+Pressure changes can indicate different weather systems; low pressure often leads to rain as it promotes cloud formation.
+Cloud cover directly impacts rainfall; more clouds generally mean higher chances of rain.
+UV index indirectly affects rainfall by influencing cloud cover and atmospheric conditions.
+            </p>
+        </div>
+
+        <!-- White Box 2 -->
+        <div class="white-box image-box">
+            <img src="static/images/Rainfall.png" alt="Rainfall Prediction">
+        </div>
+        </div>
+</section>
+
+        <section id="interactive-map" class="mb-5">
+            <h2>Temperature Map</h2>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </section>
+        <section id="current-weather" class="mb-5" style="color: white;">
+    <h2>Current Weather Info</h2>
+    <form action="/current-weather" method="post">
+        <div class="form-group">
+            <label for="location">Enter location:</label>
+            <input type="text" id="location" name="location" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Get Weather</button>
+    </form>
+
+    {% if weather_info %}
+        <h3>Weather Info</h3>
+        <table class="table table-bordered" style="color: white;">
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in weather_info.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Graphs</h3>
+        <div class="scroll-container">
+            <img src="data:image/png;base64,{{ temperature_graph }}" alt="Temperature Graph">
+            <img src="data:image/png;base64,{{ humidity_graph }}" alt="Humidity Graph">
+            <img src="data:image/png;base64,{{ pressure_graph }}" alt="Pressure Graph">
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <h3>Error</h3>
+        <p>{{ error }}</p>
+    {% endif %}
+</section>
+
+           <section id="rainfall-prediction" class="mb-5">
+            <h2>Rainfall Prediction</h2>
+          <form action="/predict-rainfall" method="post">
+          <div class="row">
+            <div class="col-md-6">
+                <!-- Temperature input -->
+                <div class="form-group">
+                    <label for="temperature">Temperature:</label>
+                    <input type="number" id="temperature" name="temperature" class="form-control" required>
+                </div>
+                <!-- Wind Speed input -->
+                <div class="form-group">
+                    <label for="wind_speed">Wind Speed:</label>
+                    <input type="number" id="wind_speed" name="wind_speed" class="form-control" required>
+                </div>
+                                <!-- wind direction input -->
+<div class="form-group">
+    <label for="wind_direction">Wind Direction:</label>
+    <select id="wind_direction" name="wind_direction" class="form-control" required>
+        <option value="N">N</option>
+        <option value="NNE">NNE</option>
+        <option value="NE">NE</option>
+        <option value="ENE">ENE</option>
+        <option value="E">E</option>
+        <option value="ESE">ESE</option>
+        <option value="SE">SE</option>
+        <option value="SSE">SSE</option>
+        <option value="S">S</option>
+        <option value="SSW">SSW</option>
+        <option value="SW">SW</option>
+        <option value="WSW">WSW</option>
+        <option value="W">W</option>
+        <option value="WNW">WNW</option>
+        <option value="NW">NW</option>
+        <option value="NNW">NNW</option>
+    </select>
+</div>
+
+                                <div class="form-group">
+                    <label for="wind_degree">Wind Degree:</label>
+                    <input type="number" id="wind_degree" name="wind_degree" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!-- UV Index input -->
+                <div class="form-group">
+                    <label for="uv_index">UV Index:</label>
+                    <input type="number" id="uv_index" name="uv_index" class="form-control" required>
+                </div>
+                               <!-- Pressure input -->
+                <div class="form-group">
+                    <label for="pressure">Pressure:</label>
+                    <input type="number" id="pressure" name="pressure" class="form-control" required>
+                </div>
+                <!-- Season input -->
+                <!-- Humidity input -->
+                <div class="form-group">
+                    <label for="humidity">Humidity:</label>
+                    <input type="number" id="humidity" name="humidity" class="form-control" required>
+                </div>
+                <!-- Region input -->
+                <div class="form-group">
+                    <label for="cloudcover">Cloud Cover:</label>
+                    <input type="number" id="cloudcover" name="cloudcover" class="form-control" required>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Predict Rainfall</button>
+    </form>
+    {% if rainfall_prediction %}
+        <h3>Prediction Result</h3>
+        <p>{{ rainfall_prediction }}</p>
+        <img src="{{ gif_path }}" alt="Rainfall Prediction GIF">
+               {% if rainfall_prediction == "Rain expected" %}
+    <div class="precaution">
+<h3>Precautions:</h3>
+<p>It's going to rain! Here are some precautions you should take:</p>
+<ul>
+   <li>Carry an umbrella or raincoat.</li>
+   <li>Avoid travelling if possible to prevent getting wet in heavy rain.</li>
+   <li>Stay indoors during severe weather conditions.</li>
+   <li>Ensure your home is prepared for possible flooding.</li>
+    <li>Make a good storage for reserving rainwater </li>
+    <li>store your important items in safe place </li>
+</ul>
+        <p>{{ precaution }}</p>
+    </div>
+{% endif %}
+    {% endif %}
+</section>
+
+
+<section id="about-developers" class="container my-5">
+<h2>About Developers</h2>
+<div class="row">
+    <!-- Developer 1 -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <img src="static/images/developer1.png" class="card-img-top circular-image" alt="Developer 1">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="color: black;">Shlok Kharva</h5>
+                <p class="card-text" style="color: black;">Persuing B.E Degree in CE(SY) from SVIT,VASAD</p>
+                <a href="https://www.instagram.com/shlok.py?igsh=MWxndmkxdmloZ3ZoMg==" class="btn btn-primary mt-auto">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer 2 -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <img src="static/images/developer2.png" class="card-img-top circular-image" alt="Developer 2">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="color: black;">Kunj Patel</h5>
+                <p class="card-text" style="color: black;">Persuing B.E Degree in IT(SY) from SVIT,VASAD</p>
+                <a href="https://www.instagram.com/kunjpxtel?igsh=eWJuMDFibHVzdGVt" class="btn btn-primary mt-auto">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer 3 -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <img src="static/images/developer3.png" class="card-img-top circular-image" alt="Developer 3">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="color: black;">Smit Kharva</h5>
+                <p class="card-text" style="color: black;">Persuing B.E Degree in CE(FY) from SVIT,VASAD</p>
+                <a href="https://www.instagram.com/smitkharva27/?igsh=Nm8yOWppNTBvbzF6" class="btn btn-primary mt-auto">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Developer 4 -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100">
+            <img src="static/images/developer4.png" class="card-img-top circular-image" alt="Developer 4">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title" style="color: black;">Aaditya mistry</h5>
+                <p class="card-text" style="color: black;">Persuing B.E Degree in CE(SY) from SVIT,VASAD</p>
+                <a href="https://www.instagram.com/aaddiiiii____/?igsh=MXVlbzE0YTk5b3c5NA%3D%3D" class="btn btn-primary mt-auto">Contact</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        <footer>
+            <section id="feedback" class="mb-5">
+    <h2>Suggestions</h2>
+    <form action="/submit-review" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" class="form-control" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Rating:</label>
+<div class="rating">
+    <input type="radio" id="star5" name="rating" value="5">
+    <label for="star5" title="5 stars">&#9733;</label>
+    <input type="radio" id="star4" name="rating" value="4">
+    <label for="star4" title="4 stars">&#9733;</label>
+    <input type="radio" id="star3" name="rating" value="3">
+    <label for="star3" title="3 stars">&#9733;</label>
+    <input type="radio" id="star2" name="rating" value="2">
+    <label for="star2" title="2 stars">&#9733;</label>
+    <input type="radio" id="star1" name="rating" value="1">
+    <label for="star1" title="1 star">&#9733;</label>
+</div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+
+    <h3>All Suggestion</h3>
+    <div id="reviews-list">
+        {% for review in reviews %}
+        <div class="review p-3 my-3 border rounded">
+            <h5>{{ review.name }}</h5>
+            <p>{{ review.review }}</p>
+            <p>Rating: {{ review.rating }} stars</p>
+        </div>
+        {% else %}
+        <p>No reviews yet.</p>
+        {% endfor %}
+    </div>
+ </section>
+            <p>&copy; 2024 Rainfall Prediction Website, Team Eklavya (MECIA-HACKS, SVIT) All rights reserved.</p>
+        </footer>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="js/scripts.js"></script>
+
+<script>
+    // Initialize map
+    var map = L.map('map').setView([20.5937, 78.9629], 5); // Coordinates for India
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    async function fetchPrecipitationData(state) {
+        try {
+            const apiKey = 'j6RrAyeZiuVc0Ofe78V6dF86lc0nC74N'; // Replace with your Tomorrow.io API key
+            const url = `https://api.tomorrow.io/v4/timelines?location=${state.coords[0]},${state.coords[1]}&fields=precipitation&timesteps=current&units=metric&apikey=${apiKey}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.data.timelines[0].intervals[0].values.precipitation;
+        } catch (error) {
+            console.error(`Error fetching precipitation data for ${state.name}:`, error);
+            return 0; // Return 0 if there's an error
+        }
+    }
+
+    async function plotPrecipitation() {
+        // Example states and their coordinates (replace with actual data)
+        const states = [
+  { name: 'Delhi', coords: [28.6139, 77.2090] },
+  { name: 'Mumbai', coords: [19.0760, 72.8777] },
+  { name: 'Bengaluru', coords: [12.9716, 77.5946] },
+  { name: 'Chennai', coords: [13.0827, 80.2707] },
+  { name: 'Kolkata', coords: [22.5726, 88.3639] },
+  { name: 'Hyderabad', coords: [17.3850, 78.4867] },
+  { name: 'Ahmedabad', coords: [23.0225, 72.5714] },
+  { name: 'Pune', coords: [18.5204, 73.8567] },
+  { name: 'Jaipur', coords: [26.9124, 75.7873] },
+  { name: 'Lucknow', coords: [26.8467, 80.9462] },
+  { name: 'Patna', coords: [25.5941, 85.1376] },
+  { name: 'Bhopal', coords: [23.2599, 77.4126] },
+  { name: 'Thiruvananthapuram', coords: [8.5241, 76.9366] },
+  { name: 'Chandigarh', coords: [30.7333, 76.7794] },
+  { name: 'Guwahati', coords: [26.1445, 91.7362] },
+  { name: 'Visakhapatnam', coords: [17.6868, 83.2185] },
+  { name: 'Indore', coords: [22.7196, 75.8577] },
+  { name: 'Surat', coords: [21.1702, 72.8311] },
+  { name: 'Kanpur', coords: [26.4499, 80.3319] },
+  { name: 'Nagpur', coords: [21.1458, 79.0882] },
+  { name: 'Vadodara', coords: [22.3072, 73.1812] },
+  { name: 'Coimbatore', coords: [11.0168, 76.9558] },
+  { name: 'Ludhiana', coords: [30.9010, 75.8573] },
+  { name: 'Agra', coords: [27.1767, 78.0081] },
+  { name: 'Varanasi', coords: [25.3176, 82.9739] },
+  { name: 'Amritsar', coords: [31.6340, 74.8723] }
+            // Add more states with their coordinates
+        ];
+
+        for (const state of states) {
+            const precipitation = await fetchPrecipitationData(state);
+
+            L.circleMarker(state.coords, {
+                radius: 10,
+                color: precipitation > 0 ? 'red' : 'darkgreen',
+                fillOpacity: 0.6
+            }).addTo(map)
+            .bindPopup(`${state.name}: ${precipitation.toFixed(2)} mm`);
+        }
+    }
+
+    // Call the function to plot precipitation
+    plotPrecipitation();
+</script>
+
+    </section>
+</body>
+</html>
